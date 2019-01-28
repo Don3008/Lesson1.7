@@ -10,36 +10,42 @@ namespace PointOfCircleRandomCenter
     {
         static void Main(string[] args)
         {
-            /* R0 - радиус окружности, которую мы задаем
-             * x0, y0 - координаты центра окружности
-             * x, y - координаты точки, которую нужно проверить
-             * s - сумма квадратов координат
+            /* initRadius - радиус окружности, которую мы задаем
+             * initCoordinateX, initCoordinateY - координаты центра окружности
+             * coordinateOfPointX, coordinateOfPointY - координаты точки, которую нужно проверить
+             * sumOfSquares - сумма квадратов координат
+             * radiusOfSquare - радиус окружности в квадрате
              */
-            double x0, y0, x, y, R0, s;
+            double initCoordinateX, initCoordinateY, coordinateOfPointX, coordinateOfPointY, initRadius, sumOfSquares, radiusOfSquare;
             Console.Write("Введите радиус \"R\" вашей окружности: ");
-            R0 = Convert.ToDouble(Console.ReadLine());
-            if (R0 >= 0)
+            initRadius = Convert.ToDouble(Console.ReadLine());
+            if (initRadius >= 0)
             {
-                Console.Write("Введите координату \"x0\" центра вашей окружности: ");
-                x0 = Convert.ToDouble(Console.ReadLine());
-                Console.Write("Введите координату \"y0\" центра вашей окружности: ");
-                y0 = Convert.ToDouble(Console.ReadLine());
-                Console.Write("Введите координату \"x\" вашей точки: ");
-                x = Convert.ToDouble(Console.ReadLine());
-                Console.Write("Введите координату \"y\" вашей точки: ");
-                y = Convert.ToDouble(Console.ReadLine());
-                s = Math.Pow((x0 - x), 2) + Math.Pow((y0 - y), 2);
-                if (Math.Pow(R0, 2) < s)
+                Console.Write("Введите координату \"initCoordinateX\" центра вашей окружности: ");
+                initCoordinateX = Convert.ToDouble(Console.ReadLine());
+                Console.Write("Введите координату \"initCoordinateY\" центра вашей окружности: ");
+                initCoordinateY = Convert.ToDouble(Console.ReadLine());
+                Console.Write("Введите координату \"coordinateOfPointX\" вашей точки: ");
+                coordinateOfPointX = Convert.ToDouble(Console.ReadLine());
+                Console.Write("Введите координату \"coordinateOfPointY\" вашей точки: ");
+                coordinateOfPointY = Convert.ToDouble(Console.ReadLine());
+                radiusOfSquare = Math.Pow(initRadius, 2);
+                sumOfSquares = Math.Pow((initCoordinateX - coordinateOfPointX), 2) + 
+                Math.Pow((initCoordinateY - coordinateOfPointY), 2);
+                if (radiusOfSquare < sumOfSquares)
                 {
-                    Console.WriteLine("Точка с координатами x = " + x + "; y = " + y + " находится за пределами окружности");
+                    Console.WriteLine("Точка с координатами coordinateOfPointX = " + coordinateOfPointX + "; " +
+                        "coordinateOfPointY = " + coordinateOfPointY + " находится за пределами окружности");
                 }
-                else if (Math.Pow(R0, 2) == s)
+                else if (radiusOfSquare == sumOfSquares)
                 {
-                    Console.WriteLine("Точка с координатами x = " + x + "; y = " + y + " находится на окружности");
+                    Console.WriteLine("Точка с координатами coordinateOfPointX = " + coordinateOfPointX + 
+                        "; coordinateOfPointY = " + coordinateOfPointY + " находится на окружности");
                 }
                 else
                 {
-                    Console.WriteLine("Точка с координатами x = " + x + "; y = " + y + " находится внутри окружности");
+                    Console.WriteLine("Точка с координатами coordinateOfPointX = " + coordinateOfPointX + 
+                        "; coordinateOfPointY = " + coordinateOfPointY + " находится внутри окружности");
                 }
             }
             else
